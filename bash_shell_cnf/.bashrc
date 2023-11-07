@@ -1,5 +1,7 @@
+# vim:fileencoding=utf-8:ft=conf:foldmethod=marker
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+
 # for examples
 
 # If not running interactively, don't do anything
@@ -116,13 +118,16 @@ if ! shopt -oq posix; then
   fi
 fi
 
+#: OWN CONFIGURATIONS {{{
 # My command prompt configuration:
 . ~/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1='\e[0;35m${debian_chroot:+($debian_chroot)}\w/\033[0m\e[0m\e[0;34m\033[1m$(__git_ps1 "[%s]")\033[0m\e[0m--> '
-
+export PS1='\e[0;35m${debian_chroot:+($debian_chroot)}\w/\033[0m\e[0m\e[0;34m\033[1m$(__git_ps1 "<%s>")\033[0m\e[0m--> '
 # Example of the colors in a bash scripts
 	#purpleColor="\e[0;35m\033[1m"
 	#endColor="\033[0m\e[0m"
 # Example of the git status in a bash prompt.
 	#export PS1='\w$(__git_ps1 " (%s)")\$ '
+#}}}
+
+
