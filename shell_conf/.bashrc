@@ -93,6 +93,8 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias delete='rm -f -r'
+alias start='open'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -124,10 +126,10 @@ fi
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1='\e[0;35m${debian_chroot:+($debian_chroot)}\w/\033[0m\e[0m\e[0;34m\033[1m$(__git_ps1 "<%s>")\033[0m\e[0m--> '
 # Example of the colors in a bash scripts
-	#purpleColor="\e[0;35m\033[1m"
-	#endColor="\033[0m\e[0m"
+    #purpleColor="\e[0;35m\033[1m"
+    #endColor="\033[0m\e[0m"
 # Example of the git status in a bash prompt.
-	#export PS1='\w$(__git_ps1 " (%s)")\$ '
+    #export PS1='\w$(__git_ps1 " (%s)")\$ '
 #}}}
 
 
