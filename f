@@ -1,2 +1,0 @@
-kit.py
-trt.tst
