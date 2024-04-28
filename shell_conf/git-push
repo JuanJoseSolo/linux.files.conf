@@ -1,0 +1,34 @@
+#!/bin/bash
+
+args=":cf"
+
+BRANCH=$(git symbolic-ref --short HEAD)
+
+synch_remote(){
+    echo ">> Synch repo"
+    git fetch
+    git pull
+
+}
+
+
+while getopts ${args} opt; do
+    case ${opt} in
+        c) 
+            synch_remote
+            git add .
+            git commit -m $1
+            git push origin $BRANCH
+            ;;
+        f)
+            synch_remote
+            git add $1
+            git commit -m $2
+            git push origin $BRANCH
+            ;;
+        ?)
+            echo "Invalid option: -${OPTARG}."
+            exit 1
+            ;;
+    esac
+done
