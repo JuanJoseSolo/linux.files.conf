@@ -1,17 +1,16 @@
 #!/bin/bash
 
 args=":cf"
-
+#current branch
 BRANCH=$(git symbolic-ref --short HEAD)
-
+#pull remote data
 synch_remote(){
     echo ">> Synch repo"
     git fetch
     git pull
 
 }
-
-
+#switch case - push changes.
 while getopts ${args} opt; do
     case ${opt} in
         c) 
