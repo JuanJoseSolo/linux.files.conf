@@ -1,28 +1,31 @@
 #!/bin/bash
 
 args=":cf"
-#current branch
+
 BRANCH=$(git symbolic-ref --short HEAD)
-#pull remote data
+
 synch_remote(){
     echo ">> Synch repo"
     git fetch
     git pull
 
 }
-#switch case - push changes.
+
+
 while getopts ${args} opt; do
     case ${opt} in
         c) 
+            echo ">> The '$2' comment has been set."
             synch_remote
             git add .
-            git commit -m $1
+            git commit -m $2
             git push origin $BRANCH
             ;;
         f)
+            echo ">> The '$3' comment has been set."
             synch_remote
-            git add $1
-            git commit -m $2
+            git add $2
+            git commit -m $3
             git push origin $BRANCH
             ;;
         ?)
