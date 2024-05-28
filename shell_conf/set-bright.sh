@@ -5,7 +5,10 @@ install=false
 help=false
 #Print help 
 usage() {
-    echo "Usage: $0 [-i <false>] [-p <string>]" 1>&2; exit 1; 
+    echo "Usage: $0 [-i <false>] [-h <usage>]" 
+    echo " -i -> install the tool needed."
+    echo " -h -> print the help"
+    echo " Example: set-bright.sh 50 [50% of the screen brights]"; exit 1; 
 }
 
 #process command options.
@@ -33,6 +36,7 @@ if [[ $install == true  ]]; then
   else
     echo "[!] >>brightnessctl is not installed."
     sudo apt install brightnessctl 
+    sudo cp set-bright.sh /usr/local/bin/
   fi
 elif [[ $help == true ]]; then
   usage

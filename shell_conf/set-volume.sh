@@ -33,13 +33,7 @@ if [[ $install == true  ]]; then
   else
     echo "[!] >>Pulsemixer is not installed."
     sudo apt install pulsemixer
-  fi
-  bright=$(dpkg-query -W -f='${Status}' brightnessctl)
-  if [[ $bright == "install ok installed" ]]; then
-    echo "[+] >>brightnessctl is already installed."
-  else
-    echo "[!] >>brightnessctl is not installed."
-    sudo apt install brightnessctl
+    sudo cp set-volume.sh /usr/local/bin/
   fi
 elif [[ $help == true ]]; then
   usage
