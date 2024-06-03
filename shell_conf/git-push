@@ -47,6 +47,6 @@ while getopts ${args} opt; do
     esac
 done
 #if any argument given
-if ! [[ "${c}" ]]; then
-  _usage_
-fi
+#if ! [[ "${c}" ]]; then
+#  _usage_
+#fi
