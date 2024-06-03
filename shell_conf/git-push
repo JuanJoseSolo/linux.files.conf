@@ -1,17 +1,27 @@
 #!/bin/bash
 
+#Script arguments.
 args=":cf"
-
+#Current git branch.
 BRANCH=$(git symbolic-ref --short HEAD)
-
+#Git repo synchronization.
 synch_remote(){
     echo ">> Synch repo"
     git fetch
     git pull
-
 }
-
-
+#Help
+_usage_(){
+  echo "===================== {HELP PANNEL} =============================="
+  echo "Usage: $0 [-c <string|commit>] [-f <string|file>]" 
+  echo " -c : the git commit to add all changes."
+  echo " -f : the name file [root path] to add."
+  echo "Example:"
+  echo ">> git-push.sh -c 'my commit' -c '/home/repo/file1 "
+  echo "=================================================================="
+  exit 1; 
+}
+#command options
 while getopts ${args} opt; do
     case ${opt} in
         c) 
@@ -30,7 +40,12 @@ while getopts ${args} opt; do
             ;;
         ?)
             echo "Invalid option: -${OPTARG}."
+            _usage_
             exit 1
             ;;
     esac
 done
+#if any argument given
+if ! [[ "${c}" ]] || ! [[ "${f}" ]]; then
+  _usage_
+fi
