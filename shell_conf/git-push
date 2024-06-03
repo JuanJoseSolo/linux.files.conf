@@ -2,14 +2,6 @@
 
 #Script arguments.
 args=":cf"
-#Current git branch.
-BRANCH=$(git symbolic-ref --short HEAD)
-#Git repo synchronization.
-synch_remote(){
-    echo ">> Synch repo"
-    git fetch
-    git pull
-}
 #Help
 _usage_(){
   echo "===================== {HELP PANNEL} =============================="
@@ -21,17 +13,26 @@ _usage_(){
   echo "=================================================================="
   exit 1; 
 }
+#Current git branch.
+BRANCH=$(git symbolic-ref --short HEAD)
+#Git repo synchronization.
+synch_remote(){
+    echo ">> Synch repo"
+    git pull --all
+}
 #command options
 while getopts ${args} opt; do
     case ${opt} in
         c) 
+            echo "Option one"
             echo ">> The '$2' comment has been set."
             synch_remote
             git add .
-            git commit -m $2
+            git commit -m "$2"
             git push origin $BRANCH
             ;;
         f)
+            echo "Option one"
             echo ">> The '$3' comment has been set."
             synch_remote
             git add $2
@@ -46,6 +47,6 @@ while getopts ${args} opt; do
     esac
 done
 #if any argument given
-if ! [[ "${c}" ]] || ! [[ "${f}" ]]; then
+if ! [[ "${c}" ]]; then
   _usage_
 fi
